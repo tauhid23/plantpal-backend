@@ -36,7 +36,7 @@ export function signToken(user: Pick<TUser, "id" | "username" | "email">) {
   return jwt.sign(
     { id: user.id, username: user.username, email: user.email },
     env.JWT_SECRET,
-    { expiresIn: "7d" }
+    { expiresIn: "3h" }
   );
 }
 
