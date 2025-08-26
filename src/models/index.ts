@@ -1,4 +1,5 @@
 import { Activity } from "./Activity";
+import { Comment } from "./comment";
 import { Plant } from "./Plants";
 import { User } from "./User";
 
@@ -38,4 +39,26 @@ Activity.belongsTo(Plant, {
   as: "plant",
 });
 
-export { User, Plant, Activity };
+// User, plant and comment associations
+
+User.hasMany(Comment, {
+  foreignKey: "userId",
+  as: "comments",
+});
+
+Comment.belongsTo(User, {
+  foreignKey: "userId",
+  as: "user",
+});
+
+Plant.hasMany(Comment, {
+  foreignKey: "plantId",
+  as: "comments",
+});
+
+Comment.belongsTo(Plant, {
+  foreignKey: "plantId",
+  as: "plant",
+});
+
+export { User, Plant, Activity, Comment };
