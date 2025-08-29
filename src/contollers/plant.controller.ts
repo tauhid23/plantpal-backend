@@ -4,6 +4,7 @@ import {
   deletePlant,
   getMyPlants,
   getPlantById,
+  listAllPlants,
   updatePlant,
 } from "../services/plant.service";
 import { uploadImage } from "../services/upload.service";
@@ -83,4 +84,9 @@ export const deletePlantCtrl = async (req: Request, res: Response) => {
   const ok = await deletePlant(id, me.id);
   if (!ok) return res.status(404).json({ error: "Not found" });
   res.status(204).send();
+};
+
+export const listAllPublic = async (req: Request, res: Response) => {
+  const plants = await listAllPlants();
+  res.json({ plants });
 };
