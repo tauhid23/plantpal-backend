@@ -37,3 +37,8 @@ export async function deletePlant(id: number, userId: number) {
   const count = await Plant.destroy({ where: { id, userId } });
   return count > 0;
 }
+
+export async function listAllPlants() {
+  const rows = await Plant.findAll({ order: [["updatedAt", "DESC"]] });
+  return rows.map((r) => r.get({ plain: true }) as TPlant);
+}
