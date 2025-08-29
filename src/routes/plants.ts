@@ -3,6 +3,7 @@ import {
   createPlantCtrl,
   deletePlantCtrl,
   getPlant,
+  listAllPublic,
   listMyPlants,
   updatePlantCtrl,
 } from "../contollers/plant.controller";
@@ -16,6 +17,9 @@ router.get("/:id", getPlant);
 
 // Auth: my plants
 router.get("/", authRequired, listMyPlants);
+
+// List all plants (for feed)
+router.get("/public/all", listAllPublic);
 
 // Auth: create/update/delete (image optional as multipart/form-data key "image")
 router.post("/", authRequired, upload.single("image"), createPlantCtrl);
