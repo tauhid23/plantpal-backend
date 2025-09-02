@@ -1,0 +1,14 @@
+version: "3.9"
+
+services:
+  db:
+    image: postgres:15
+    container_name: plantpal_db
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: tauhid1234
+      POSTGRES_DB: plantpal
+    ports:
+      - "5434:5432"
+    
